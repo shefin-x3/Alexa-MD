@@ -1,9 +1,53 @@
 {
-    "name": "x-asena",
-    "description": "X-asena Multi Device whatsappbot",
-    "logo": "https://i.hizliresim.com/6Bbj7i.jpg",
-    "keywords": ["whatsapp"],
-    "repository": "https://github.com/Neeraj-x0/x-asena",
-    "website":   "https://github.com/Neeraj-x0/x-asena",
-    "success_url": "https://github.com/Neeraj-x0/x-asena",
-    "stack": "container" }
+  "name": "Alexa MD",
+  "description": "Alexa Multi Device WhatsApp bot",
+  "logo": "https://i.hizliresim.com/6Bbj7i.jpg",
+  "keywords": ["whatsapp", "shefin", "alexa", "alexa-md"],
+  "repository": "https://github.com/5hefin/Alexa-MD",
+  "stack": "container",
+  "env": {
+    "SESSION_ID": {
+      "description": "session id",
+      "required": false,
+      "value": ""
+    },
+    "SUDO": {
+      "description": "admin",
+      "required": true,
+      "value": "null"
+    },
+    "MODE": {
+      "description": "mode",
+      "required": true,
+      "value": "private"
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Heroku app name, same as above entered",
+      "required": true
+    },
+    "HEROKU_API_KEY": {
+      "description": "Heroku account api key, https://dashboard.heroku.com/account",
+      "required": true
+    },
+    "LOG_MSG": {
+      "description": "Show whatsapp msgs in log",
+      "required": false,
+      "value": "false"
+    },
+    "PREFIX": {
+      "description": "prefix for bot. all so can be null",
+      "required": true,
+      "value": "."
+    },
+    "STICKER_PACKNAME": {
+      "description": "sticker package name",
+      "required": false,
+      "value": "Alexa;Shefin"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ]
+}
