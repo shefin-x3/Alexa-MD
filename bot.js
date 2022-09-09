@@ -25,10 +25,7 @@ const { PluginDB } = require("./lib/database/plugins");
 const { parseJid } = require("./lib");
 async function whatsAsena() {
   await config.DATABASE.sync();
-  const { state, saveState } =  useSingleFileAuthState(
-    "./media/hehe.json",
-    pino({ level: "silent" })
-  );
+  const { state, saveState } =  useSingleFileAuthState("./lib/session.json");
  
   let conn = makeWASocket({
     logger: pino({ level: "silent" }),
