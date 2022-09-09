@@ -4,7 +4,7 @@
   "description": "WhatsAsena project - a Whatsapp userbot helping to improve your Whatsapp experience.",
   "main": "index.js",
   "scripts": {
-    "start": "supervisor -s index.js"
+    "start": "pm2 start . --attach --name Alexa"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "node-cron": "3.0.1",
     "async-g-i-s": "1.0.0",
     "raganork-bot": "2.0.7",
+    "pm2": "^5.2.0",
     "sequelize": "^6.13.0",
     "sqlite3": "^5.0.0",
     "supervisor": "^0.12.0",
