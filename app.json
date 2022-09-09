@@ -8,7 +8,7 @@
   "env": {
     "SESSION_ID": {
       "description": "session id",
-      "required": false,
+      "required": true,
       "value": ""
     },
     "SUDO": {
