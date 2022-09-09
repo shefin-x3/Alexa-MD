@@ -25,7 +25,6 @@ bot({
         changelog += `${(parseInt(i)+1)}• *${commits.all[i].message}*\n`
     }
         mss = changelog;
-        var buttons = [{buttonId: handler+'updt', buttonText: {displayText: 'START UPDATE'}, type: 1}]
     }
 
     return await message.sendMessage(mss)   
