@@ -123,22 +123,6 @@ conn.sendMessage(data.id,{image:{url:userpp},caption:msg.replace(/{pp}/,''),ment
           }
           events.commands.map(async (command) => {
             if (command.pattern.test(text_msg)) {
-
-                    let sendMsg = false;
-                    var chat = conn.chats.get(msg.key.remoteJid)
-                        
-                    if ((config.SUDO !== false && msg.key.fromMe === false && command.fromMe === true &&
-                        (msg.participant && config.SUDO.includes(',') ? config.SUDO.split(',').includes(msg.participant.split('@')[0]) : msg.participant.split('@')[0] == config.SUDO || config.SUDO.includes(',') ? config.SUDO.split(',').includes(msg.key.remoteJid.split('@')[0]) : msg.key.remoteJid.split('@')[0] == config.SUDO)
-                    ) || command.fromMe === msg.key.fromMe || (command.fromMe === false && !msg.key.fromMe)) {
-                        if (command.onlyPinned && chat.pin === undefined) return;
-                        if (!command.onlyPm === chat.jid.includes('-')) sendMsg = true;
-                        else if (command.onlyGroup === chat.jid.includes('-')) sendMsg = true;
-                    }
-              if (sendMsg) {
-                        if (config.SEND_READ === 'true') {
-                            await conn.readMessages(msg.key.remoteJid);
-                        }
-
               var match = text_msg.match(command.pattern)[1] || false;
               whats = new Message(conn, msg, ms);
 
@@ -159,7 +143,6 @@ conn.sendMessage(data.id,{image:{url:userpp},caption:msg.replace(/{pp}/,''),ment
                 );*/
               }
             }  
-           }
           });
         });
       } catch (e) {
