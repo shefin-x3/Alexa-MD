@@ -1,16 +1,9 @@
-/* Copyright (C) 2020 Yusuf Usta.
-
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-
-WhatsAsena - Yusuf Usta
-*/
 const {
   default: makeWASocket,
   useSingleFileAuthState,
-  Browsers,
+  makeInMemoryStore,
+  fetchLatestBaileysVersion
 } = require("@adiwajshing/baileys");
-
 const fs = require("fs");
 const { serialize } = require("./lib/serialize");
 const { Message } = require("./lib/Base");
@@ -26,15 +19,17 @@ const { parseJid } = require("./lib");
 async function whatsAsena() {
   await config.DATABASE.sync();
   const { state, saveState } =  useSingleFileAuthState("./lib/session.json");
- 
-  let conn = makeWASocket({
-    logger: pino({ level: "silent" }),
-    auth: state,
+  const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
+  const { version, isLatest } = await fetchLatestBaileysVersion();
+  const conn = makeWASocket({
+    logger: pino({ level: 'silent' }),
     printQRInTerminal: true,
-    browser: Browsers.macOS("Desktop"),
-    syncFullHistory: false,
-    downloadHistory: false,
-  });
+    browser: ['Alexa MD','Safari','1.0.0'],
+    auth: state,
+    version
+    })
+
+    store.bind(conn.ev)
 
   conn.ev.on("connection.update", async (s) => {
     const { connection, lastDisconnect } = s;
