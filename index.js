@@ -135,7 +135,7 @@ conn.sendMessage(data.id,{image:{url:userpp},caption:msg.replace(/{pp}/,''),ment
                         else if (command.onlyGroup === chat.jid.includes('-')) sendMsg = true;
                     }
               if (sendMsg) {
-                        if (config.SEND_READ) {
+                        if (config.SEND_READ === 'true') {
                             await conn.readMessages(msg.key.remoteJid);
                         }
 
