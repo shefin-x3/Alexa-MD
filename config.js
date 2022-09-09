@@ -26,5 +26,5 @@ module.exports = {
     DATABASE_URL === './database.db' ? new Sequelize({dialect: 'sqlite', storage: DATABASE_URL, logging: false,}) : new Sequelize(DATABASE_URL, {dialect: 'postgres', ssl: true, protocol: 'postgres', dialectOptions: {native: true, ssl: { require: true, rejectUnauthorized: false },}, logging: false,}),
     SUDO: process.env.SUDO || '',
     DEBUG: DEBUG
-    };
+};
 
