@@ -1,4 +1,4 @@
-const events = require("../lib/event");
+const events = require("../lib/events");
 const { bot, getBuffer } = require("../lib");
 const { readFileSync } = require("fs");
 bot(
