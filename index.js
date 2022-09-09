@@ -118,7 +118,9 @@ conn.sendMessage(data.id,{image:{url:userpp},caption:msg.replace(/{pp}/,''),ment
           let msg = await serialize(JSON.parse(JSON.stringify(ms)), conn);
           if (!msg.message) return;
           let text_msg = msg.body;
+          if (config.LOG_MSG === 'true') {
           console.log(text_msg);
+          }
           events.commands.map(async (command) => {
             if (command.pattern.test(text_msg)) {
               var match = text_msg.match(command.pattern)[1] || false;
